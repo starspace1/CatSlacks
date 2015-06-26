@@ -1,0 +1,4 @@
+<h1>CatFacts</h1>
+<p><%= @fact %></p>
+<img src= "http://lorempixel.com/g/100/100/cats/">
+<p><%= button_to 'Send to Channel', { :controller => "cat_facts", :action => "send_message", :fact => @fact }, :method=>:post %></p>
