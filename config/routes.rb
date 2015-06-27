@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   post 'cat_facts/send_message', as: :send_message
 
   root 'cat_facts#index'
+
+  get 'oauth/authorize'
+  
+  get 'oauth/request_access_token'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

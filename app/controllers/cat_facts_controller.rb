@@ -10,7 +10,7 @@ class CatFactsController < ApplicationController
 
   def send_message
     response = HTTParty.post('https://slack.com/api/chat.postMessage', query: {
-      token: SLACK[:token],
+      token: session[:access_token],
       channel: "C04U2G8SM",
       text: params[:fact],
       username: 'CatBot',
