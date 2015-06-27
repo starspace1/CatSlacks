@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root 'cat_facts#index'
 
-  get 'oauth/authorize'
+  get 'oauth/authorize', as: :authorize
   
   get 'oauth/request_access_token'
 
