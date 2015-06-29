@@ -1,4 +1,4 @@
-<h1>CatFacts</h1>
+<h1>CAT FACT!</h1>
 <p><%= @fact %></p>
 <p><%= button_to 'Send to Channel', { :controller => "cat_facts", :action => "send_message", :fact => @fact }, :method=>:post %></p>
 <p><%= link_to 'Authorize Slack', authorize_path %></p>
