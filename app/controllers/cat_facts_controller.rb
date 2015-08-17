@@ -13,9 +13,10 @@ class CatFactsController < ApplicationController
     if session[:access_token].nil?
       redirect_to root_url, notice: "You can't send a CAT FACT until you authorize Slack."
     else
+      # TODO present a list of channels for user to select from
       response = HTTParty.post('https://slack.com/api/chat.postMessage', query: {
         token: session[:access_token],
-        channel: "C04U2G8SM", #C04M51FHL is front-end
+        channel: "C04U2G8SM", #C04M51FHL is front-end, C06VD893L is orl, C04U2G8SM is rails
         text: "CAT FACT! " + params[:fact],
         username: 'CatBot',
         icon_url: 'http://lorempixel.com/g/100/100/cats/'})
