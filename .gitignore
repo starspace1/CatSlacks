@@ -17,4 +17,4 @@
 /tmp
 
 #Don't put secrets in github!
-slack.rb
+.env
