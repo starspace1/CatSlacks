@@ -27,6 +27,10 @@ gem 'oauth2'
 
 gem 'google-webfonts-rails', '~> 0.0.4'
 
+gem 'bootstrap-sass', '~> 3.3.5'
+
+gem 'better_errors', group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

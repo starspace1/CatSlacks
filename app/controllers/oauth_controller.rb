@@ -6,6 +6,11 @@ class OauthController < ApplicationController
     redirect_to client.auth_code.authorize_url(redirect_uri: SLACK[:redirect_uri])
   end
 
+  def deauthorize
+    session[:access_token] = nil
+    redirect_to root_url, notice: 'You have logged out of Slack.'
+  end
+
   def request_access_token
     if params[:code]
       client = OAuth2::Client.new(SLACK[:client_id],

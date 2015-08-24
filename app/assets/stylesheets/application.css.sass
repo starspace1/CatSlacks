@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+body
+  // Location of the image
+  background-image: image-url("overlay.png"), image-url("cat-tastic.jpg")
+  // Background image is centered vertically and horizontally at all times
+  background-position: center center
+  // Background image doesn't tile
+  background-repeat: no-repeat
+  // Background image is fixed in the viewport so that it doesn't move when the content's height is greater than the image's height
+  background-attachment: fixed
+  // This is what makes the background image rescale based on the container's size
+  background-size: cover
+  // Set a background color that will be displayed while the background image is loading
+  background-color: #464646
+  padding-top: 50px
+  // Text stuff
+  font-family: 'Raleway'
+  line-height: 1.4em
+  text-align: center
+  color: white
+  margin: 0 auto
+  min-width: 230px
+  max-width: 500px
+  -webkit-font-smoothing: antialiased
+  -moz-font-smoothing: antialiased
+  font-smoothing: antialiased
+  font-weight: 400
+
+p
+  margin-bottom: 20px
