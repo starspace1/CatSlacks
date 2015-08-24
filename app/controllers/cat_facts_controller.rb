@@ -2,8 +2,7 @@ class CatFactsController < ApplicationController
   def index
     response = HTTParty.get('http://catfacts-api.appspot.com/api/facts?number=1')
     cat_hash = JSON.parse(response)
-    @fact = "cat_hash['facts'][0]"
-    # @fact = "Cats are about to annoy you greatly."
+    @fact = cat_hash['facts'][0]
     if session[:access_token]
       response = HTTParty.get('https://slack.com/api/channels.list', query: { token: session[:access_token] })
       @channels = response.parsed_response["channels"]
