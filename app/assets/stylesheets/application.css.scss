@@ -16,7 +16,7 @@
 
  body {
   /* Location of the image */
-  background-image: url(overlay.png), url(cat-tastic.jpg);
+  background-image: image-url('overlay.png'), image-url('cat-tastic.jpg');
   
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
