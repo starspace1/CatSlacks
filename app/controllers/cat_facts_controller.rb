@@ -1,6 +1,3 @@
-require 'JSON'
-require 'httparty'
-
 class CatFactsController < ApplicationController
   def index
     # response = HTTParty.get('http://catfacts-api.appspot.com/api/facts?number=1')
