@@ -1,9 +1,9 @@
+<div class="page-header">
 <h1>CAT FACT!</h1>
+</div>
 <p><%= @fact %></p>
 <% if @channels %>
   <% @channels.each do |channel| %>
-    <%= button_to "Send to #{channel["name"]}", { controller: "cat_facts", action: "send_message", fact: @fact, channel_id: channel["id"] }, method: "post" %>
+    <p><%= button_to "Send to #{channel["name"]}", { controller: "cat_facts", action: "send_message", fact: @fact, channel_id: channel["id"] }, method: "post", class: "btn btn-default" %></p>
   <% end %>
-<% else %>
-  <p><%= button_to 'Authorize Slack', authorize_path, method: :get %></p>
 <% end %>

@@ -6,6 +6,13 @@ class OauthController < ApplicationController
     redirect_to client.auth_code.authorize_url(redirect_uri: SLACK[:redirect_uri])
   end
 
+  def deauthorize
+    session[:access_token] = nil
+    session[:team] = nil
+    session[:user] = nil
+    redirect_to root_url, notice: 'You have logged out of Slack.'
+  end
+
   def request_access_token
     if params[:code]
       client = OAuth2::Client.new(SLACK[:client_id],
@@ -13,7 +20,10 @@ class OauthController < ApplicationController
                                   site: SLACK[:authorize_uri],
                                   token_url: SLACK[:token_uri])
       session[:access_token] = client.auth_code.get_token(params[:code], redirect_uri: SLACK[:redirect_uri]).token
-      redirect_to root_url, notice: 'You can now post to Slack from this app.'
+      response = HTTParty.get('https://slack.com/api/auth.test', query: { token: session[:access_token] })
+      session[:team] = response.parsed_response["team"]
+      session[:user] = response.parsed_response["user"]
+      redirect_to root_url, notice: 'Successfully logged in with Slack!'
     else
       redirect_to root_url, notice: "Fail. #{params}"
     end

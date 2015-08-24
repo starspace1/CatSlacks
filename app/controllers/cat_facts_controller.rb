@@ -1,6 +1,6 @@
 class CatFactsController < ApplicationController
   def index
-    response = HTTParty.get('http://catfacts-api.appspot.com/api/facts?number=1')
+    response = HTTParty.get("http://catfacts-api.appspot.com/api/facts?number=1")
     cat_hash = JSON.parse(response)
     @fact = cat_hash['facts'][0]
     if session[:access_token]
@@ -12,7 +12,7 @@ class CatFactsController < ApplicationController
   def send_message
     # Redirect user to authorize Slack
     if session[:access_token].nil?
-      redirect_to root_url, notice: "You can't send a CAT FACT until you authorize Slack."
+      redirect_to root_url, notice: "Log in Slack to send a CAT FACT!"
     else
       HTTParty.post('https://slack.com/api/chat.postMessage', query: {
         token: session[:access_token],
