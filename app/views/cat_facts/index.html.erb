@@ -1,4 +1,9 @@
 <h1>CAT FACT!</h1>
 <p><%= @fact %></p>
-<p><%= button_to 'Send to Channel', { :controller => "cat_facts", :action => "send_message", :fact => @fact }, :method=>:post %></p>
-<p><%= button_to 'Authorize Slack', authorize_path, method: :get %></p>
+<% if @channels %>
+  <% @channels.each do |channel| %>
+    <%= button_to "Send to #{channel["name"]}", { controller: "cat_facts", action: "send_message", fact: @fact, channel_id: channel["id"] }, method: "post" %>
+  <% end %>
+<% else %>
+  <p><%= button_to 'Authorize Slack', authorize_path, method: :get %></p>
+<% end %>
