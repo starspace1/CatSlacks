@@ -6,7 +6,4 @@
   <% @channels.each do |channel| %>
     <p><%= button_to "Send to #{channel["name"]}", { controller: "cat_facts", action: "send_message", fact: @fact, channel_id: channel["id"] }, method: "post", class: "btn btn-default" %></p>
   <% end %>
-  <p><%= button_to 'Log Out of Slack', deauthorize_path, method: :get, class: "btn btn-default" %></p>
-<% else %>
-  <p><%= button_to 'Log in with Slack', authorize_path, method: :get, class: "btn btn-default" %></p>
 <% end %>
