@@ -1,9 +1,17 @@
 <div class="page-header">
-<h1>CAT FACT!</h1>
+  <h1>CAT FACT!</h1>
 </div>
-<p><%= @fact %></p>
+
+<h4>
+  <%= @fact %>
+</h4>
+
 <% if @channels %>
+  <br>
+  <p>Send to:</p>
   <% @channels.each do |channel| %>
-    <p><%= button_to "Send to #{channel["name"]}", { controller: "cat_facts", action: "send_message", fact: @fact, channel_id: channel["id"] }, method: "post", class: "btn btn-default" %></p>
+    <%= link_to channel["name"],
+      { controller: "cat_facts", action: "send_message", fact: @fact, channel_id: channel["id"] },
+      method: "post", class: "btn btn-default btn-sm" %>
   <% end %>
 <% end %>
